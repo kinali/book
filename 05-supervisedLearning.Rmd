@@ -105,7 +105,7 @@ tgexp <- t(gexp)
 ```
 
 ### Filtering data and scaling
-We can filter predictor variables which has low variation. They are not likely to have any predictive importance since there is not much variation and they will just slow our algorithms. The more variables the slower the algorithms will be generally. `caret::preProcess()` function can help filter the predictor variables with near zero variance. 
+We can filter predictor variables which have low variation. They are not likely to have any predictive importance since there is not much variation and they will just slow our algorithms. The more variables the slower the algorithms will be generally. `caret::preProcess()` function can help filter the predictor variables with near zero variance. 
 ```{r nzv,eval=FALSE}
 # remove near zero variation for the columns at least
 # 85% of the values are the same
@@ -132,7 +132,7 @@ processCenter=preProcess(tgexp, method = c("center"))
 tgexp=predict(processCenter,tgexp)
 ```
 
-We will next filter the predictor variables that are highly correlated. You may choose not to do this as some methods can handle correlation between predictor variables. However, the less predictor variables we have the faster the model fitting can be done.
+We will next filter the predictor variables that are highly correlated. You may choose not to do this as some methods can handle correlation between predictor variables. However, the fewer predictor variables we have the faster the model fitting can be done.
 
 ```{r filterCorr}
 # create a filter for removing higly correlated variables
@@ -143,7 +143,7 @@ tgexp=predict(corrFilt,tgexp)
 ```
 
 ### Dealing with missing values
-In real life situations, there will be missing values in our data. In genomics, we might not have values for certain genes or genomic locations due to technical problems during experiments. We have to be able to deal with these missing values. For demonstration purposes, we will now introduce NA values in our data, the "NA" values is normally used to encode missing values in R. We then show how to check and deal with those. One way is to impute them, here we use again a machine learning algorithm to guess the missing values. Another option is to discard the samples with missing values or discard the predictor variables with missing values. First, we replace one of the values as NA and check if it is there.
+In real life situations, there will be missing values in our data. In genomics, we might not have values for certain genes or genomic locations due to technical problems during experiments. We have to be able to deal with these missing values. For demonstration purposes, we will now introduce NA values in our data, the "NA" values are normally used to encode missing values in R. We then show how to check and deal with those. One way is to impute them, here we use again a machine learning algorithm to guess the missing values. Another option is to discard the samples with missing values or discard the predictor variables with missing values. First, we replace one of the values as NA and check if it is there.
 ```{r,checkNA}
 missing_tgexp=tgexp
 missing_tgexp[1,1]=NA
