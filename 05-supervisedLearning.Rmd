@@ -355,7 +355,7 @@ for( i in k){
               y=training[,1], # training set class labels
               k=i)
 
-  # predictions on the training set
+  # predictions on the test set
   class.res=predict(knnFit,testing[,-1],type="class")
   testErr[i]=1-confusionMatrix(testing[,1],
                                  class.res)$overall[1]
