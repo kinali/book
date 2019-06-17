@@ -443,7 +443,7 @@ Based on figure \@ref(fig:kknCv) the cross-validation accuracy reveals that $k=5
 ```{r knnboot,eval=FALSE,out.width='60%',fig.width=5,fig.cap="bootstrap estimate of Prediction error of k in k-NN models"}
 set.seed(17)
 # this method controls everything about training
-# we will just set up 100 bootstrap samples and for each 
+# we will just set up 20 bootstrap samples and for each 
 # bootstrap OOB samples to test the error
 trctrl <- trainControl(method = "boot",number=20,
                        returnResamp="all")
